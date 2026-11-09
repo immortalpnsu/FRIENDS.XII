@@ -1,0 +1,892 @@
+cat > index.html <<'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080814">
+<title>The Unbreakable 14 ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+background:#080814;color:white;
+font-family:Arial,sans-serif;
+overflow-x:hidden
+}
+header{
+min-height:100vh;display:flex;
+flex-direction:column;justify-content:center;
+align-items:center;text-align:center;
+padding:25px;
+background:radial-gradient(circle at top,#44216d,transparent 60%),linear-gradient(145deg,#080814,#11112b)
+}
+.tag{color:#c7a5ff;letter-spacing:4px;font-size:12px;margin-bottom:25px}
+h1{
+font-size:clamp(43px,10vw,85px);
+font-weight:900;
+background:linear-gradient(90deg,#fff,#bd8aff,#55d9ff);
+-webkit-background-clip:text;color:transparent
+}
+.subtitle{color:#d1c5e9;margin-top:20px;line-height:1.9}
+button{
+border:0;padding:14px 25px;border-radius:30px;
+background:linear-gradient(90deg,#8d45ff,#388eff);
+color:white;font-size:14px;font-weight:bold;
+margin:12px 5px;cursor:pointer;
+box-shadow:0 0 20px #7540ff55
+}
+button:active{transform:scale(.96)}
+section{padding:75px 18px;text-align:center}
+.section-title{font-size:32px;color:#d8b8ff;margin-bottom:15px}
+.description{color:#aaa3bc;line-height:1.8;margin-bottom:30px}
+#clock{color:#c39cff;margin-top:25px;font-size:13px}
+.friends{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:13px;max-width:950px;margin:auto
+}
+.card{
+padding:25px 8px;border:1px solid #45316c;
+border-radius:18px;background:linear-gradient(145deg,#19142d,#111123);
+transition:.3s
+}
+.card:hover{transform:translateY(-7px);box-shadow:0 0 22px #904dff66}
+.number{color:#9c75ff;font-size:12px;margin-bottom:12px}
+.card h3{font-size:18px}
+.quote-box{
+max-width:750px;margin:20px auto;padding:28px 18px;
+border-radius:20px;background:linear-gradient(135deg,#25153f,#131d39);
+border:1px solid #754caa;line-height:2;font-size:17px
+}
+.memories,.game-grid{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;max-width:950px;margin:auto
+}
+.memory,.game{
+background:linear-gradient(145deg,#20153c,#10182e);
+border:1px solid #754caa;border-radius:20px;padding:25px 15px
+}
+.memory span{font-size:35px}
+.memory h3,.game h3{color:#d9b8ff;margin:13px 0}
+.memory p,.game p{color:#c7bfd8;line-height:1.7}
+.message{max-width:750px;margin:25px auto;color:#d4cce6;line-height:2}
+.glow{text-shadow:0 0 20px #a34cff}
+.game-result{color:#d1a5ff;font-size:18px;font-weight:bold;margin-top:15px;min-height:28px}
+.game-board{
+display:grid;grid-template-columns:repeat(3,70px);
+gap:7px;justify-content:center;margin:20px auto
+}
+.cell{
+height:70px;background:#292044;border:1px solid #9465d8;
+border-radius:12px;font-size:28px;color:white;
+display:flex;align-items:center;justify-content:center
+}
+.tap-area{
+background:#30204c;border-radius:15px;padding:30px 8px;
+margin-top:15px;cursor:pointer;font-size:19px
+}
+.memory-grid{
+display:grid;grid-template-columns:repeat(4,1fr);
+gap:7px;max-width:300px;margin:20px auto
+}
+.memory-card{
+background:#30204c;border:1px solid #9465d8;
+border-radius:12px;height:62px;font-size:24px;
+display:flex;align-items:center;justify-content:center
+}
+footer{
+padding:40px 15px;text-align:center;
+background:#111022;color:#bca6e7;line-height:2
+}
+.heart{color:#ff4c8b}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="tag">CLASS 12 SCIENCE • FRIENDSHIP FOREVER</div>
+<h1>THE<br>UNBREAKABLE 14</h1>
+<div class="subtitle">
+14 Boys. One Brotherhood.<br>
+Countless Memories. Unlimited Madness.
+</div>
+<button onclick="go('friends')">ENTER OUR WORLD ❤️</button>
+<div id="clock"></div>
+</header>
+
+<section id="friends">
+<h2 class="section-title">THE LEGENDS 👑</h2>
+<p class="description">Different personalities, one family.<br>Meet our 14 unforgettable legends.</p>
+<div class="friends" id="friendCards"></div>
+</section>
+
+<section>
+<h2 class="section-title">OUR FRIENDSHIP 💜</h2>
+
+<div class="quote-box">
+"School gave us classrooms,<br>
+Science gave us experiments,<br>
+But life gave us something better —<br>
+<strong>14 friends who became family.</strong>"
+</div>
+
+<div class="quote-box">
+"We didn't come together to create memories.<br>
+We came together, and memories created themselves."
+</div>
+
+<div class="quote-box">
+"Marks may fade, exams will end,<br>
+Classes will change, years will pass.<br>
+But our friendship will always remain special."
+</div>
+
+<div class="quote-box">
+"Fourteen different minds,<br>
+Fourteen different dreams,<br>
+One unforgettable brotherhood."
+</div>
+</section>
+
+<section>
+<h2 class="section-title">OUR LITTLE UNIVERSE 🌌</h2>
+<div class="memories">
+
+<div class="memory">
+<span>😂</span><h3>Unlimited Madness</h3>
+<p>Every serious moment becomes a comedy scene.</p>
+</div>
+
+<div class="memory">
+<span>📚</span><h3>Science Squad</h3>
+<p>Physics, Chemistry, Biology and unforgettable classes.</p>
+</div>
+
+<div class="memory">
+<span>🤝</span><h3>Always Together</h3>
+<p>Different roads, but one unforgettable journey.</p>
+</div>
+
+<div class="memory">
+<span>❤️</span><h3>Forever Family</h3>
+<p>Not brothers by blood, brothers by friendship.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2 class="section-title">🎮 THE GAME ZONE</h2>
+<p class="description">Friendship is serious, but our games are seriously crazy!</p>
+
+<div class="game-grid">
+
+<div class="game">
+<h3>🎲 RANDOM LEGEND</h3>
+<p>Who is today's lucky legend?</p>
+<button onclick="randomLegend()">PICK A FRIEND</button>
+<div class="game-result" id="legendResult">???</div>
+</div>
+
+<div class="game">
+<h3>❌ TIC TAC TOE</h3>
+<p>Two friends. One winner.</p>
+<p id="turn">Player X's turn</p>
+<div class="game-board" id="board"></div>
+<div class="game-result" id="ticResult"></div>
+<button onclick="resetTic()">NEW GAME</button>
+</div>
+
+<div class="game">
+<h3>⚡ REACTION CHALLENGE</h3>
+<p>Wait for green, then tap quickly!</p>
+<div class="tap-area" id="tapArea" onclick="tapGame()">PRESS START FIRST</div>
+<button onclick="startReaction()">START</button>
+<div class="game-result" id="reactionResult"></div>
+</div>
+
+<div class="game">
+<h3>🧠 FRIENDSHIP MEMORY</h3>
+<p>Find all matching emoji pairs!</p>
+<div class="memory-grid" id="memoryGrid"></div>
+<div class="game-result" id="memoryResult"></div>
+<button onclick="startMemory()">RESTART</button>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2 class="section-title">A MESSAGE FOR ALL 14 ❤️</h2>
+
+<div class="message">
+Maybe one day we won't sit in the same classroom.<br><br>
+Maybe our daily meetings will become rare.<br><br>
+Maybe everyone will follow their own dreams and build their future.<br><br>
+But whenever we look back at our school days,
+we will remember these faces, these laughs,
+these crazy moments and this beautiful friendship.<br><br>
+
+<strong class="glow">
+NO MATTER WHERE LIFE TAKES US,<br>
+THE UNBREAKABLE 14 WILL ALWAYS BE ONE FAMILY.
+</strong>
+</div>
+
+<button onclick="showSurprise()">🎁 OPEN A SPECIAL SURPRISE</button>
+
+<div class="quote-box" id="surprise" style="display:none">
+<h2>❤️ ONE PROMISE</h2><br>
+No ego. No jealousy. No forgetting.<br>
+Never forget the people who made your school life special.<br><br>
+<strong>14 FRIENDS. ONE STORY. FOREVER.</strong>
+</div>
+</section>
+
+<footer>
+<h2>THE UNBREAKABLE 14</h2>
+<p>Class 12 Science • Batch of Legends</p>
+<p>Made with <span class="heart">♥</span> and countless memories.</p>
+<p>Friendship has no last chapter.</p>
+<p>© 2026 • Forever Together</p>
+</footer>
+
+<script>
+const names=[
+"Priyanshu","Trupal","Darshan","Evans",
+"Sahil","Samarth","Sujal","Dhruvin",
+"Divyesh","Shivansh","Harshal","Abhay",
+"Swith","Ritesh"
+];
+
+function go(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+const container=document.getElementById("friendCards");
+
+names.forEach((name,index)=>{
+const card=document.createElement("div");
+card.className="card";
+card.innerHTML=`
+<div class="number">LEGEND #${String(index+1).padStart(2,"0")}</div>
+<h3>${name}</h3>
+<div style="margin-top:12px;color:#b89bff">★ BROTHER ★</div>`;
+container.appendChild(card);
+});
+
+function showSurprise(){
+const s=document.getElementById("surprise");
+s.style.display="block";
+s.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function updateClock(){
+document.getElementById("clock").textContent=new Date().toLocaleString();
+}
+updateClock();
+setInterval(updateClock,1000);
+
+// RANDOM LEGEND
+function randomLegend(){
+const n=names[Math.floor(Math.random()*names.length)];
+document.getElementById("legendResult").textContent="👑 "+n+" IS TODAY'S LEGEND!";
+}
+
+// TIC TAC TOE
+let cells=Array(9).fill("");
+let player="X";
+let finished=false;
+
+const wins=[
+[0,1,2],[3,4,5],[6,7,8],
+[0,3,6],[1,4,7],[2,5,8],
+[0,4,8],[2,4,6]
+];
+
+function drawBoard(){
+const b=document.getElementById("board");
+b.innerHTML="";
+cells.forEach((v,i)=>{
+const c=document.createElement("div");
+c.className="cell";
+c.textContent=v;
+c.onclick=()=>playCell(i);
+b.appendChild(c);
+});
+}
+
+function playCell(i){
+if(cells[i]||finished)return;
+cells[i]=player;
+
+if(wins.some(w=>w.every(k=>cells[k]===player))){
+document.getElementById("ticResult").textContent="🏆 PLAYER "+player+" WINS!";
+finished=true;
+}else if(cells.every(Boolean)){
+document.getElementById("ticResult").textContent="🤝 IT'S A DRAW!";
+finished=true;
+}else{
+player=player==="X"?"O":"X";
+}
+document.getElementById("turn").textContent="Player "+player+"'s turn";
+drawBoard();
+}
+
+function resetTic(){
+cells=Array(9).fill("");
+player="X";
+finished=false;
+document.getElementById("ticResult").textContent="";
+document.getElementById("turn").textContent="Player X's turn";
+drawBoard();
+}
+drawBoard();
+
+// REACTION CHALLENGE
+let reactionTimer;
+let reactionState="idle";
+let reactionStart=0;
+
+function startReaction(){
+clearTimeout(reactionTimer);
+reactionState="waiting";
+const area=document.getElementById("tapArea");
+area.style.background="#a33b55";
+area.textContent="WAIT FOR GREEN...";
+document.getElementById("reactionResult").textContent="";
+
+reactionTimer=setTimeout(()=>{
+reactionState="ready";
+reactionStart=performance.now();
+area.style.background="#168b55";
+area.textContent="TAP NOW!!! ⚡";
+},1500+Math.random()*3500);
+}
+
+function tapGame(){
+const area=document.getElementById("tapArea");
+const result=document.getElementById("reactionResult");
+
+if(reactionState==="waiting"){
+clearTimeout(reactionTimer);
+reactionState="idle";
+area.textContent="TOO EARLY! 😅";
+result.textContent="Wait for green next time!";
+}else if(reactionState==="ready"){
+const ms=Math.round(performance.now()-reactionStart);
+reactionState="idle";
+area.textContent="NICE! PLAY AGAIN?";
+result.textContent="⚡ YOUR TIME: "+ms+" ms";
+}else{
+result.textContent="Press START to play!";
+}
+}
+
+// MEMORY GAME
+const emojis=["❤️","😂","🔥","🎮","⭐","👑","🚀","💜"];
+let deck=[],first=null,lock=false,matched=0;
+
+function startMemory(){
+deck=[...emojis,...emojis].sort(()=>Math.random()-.5);
+first=null;
+lock=false;
+matched=0;
+document.getElementById("memoryResult").textContent="";
+
+const grid=document.getElementById("memoryGrid");
+grid.innerHTML="";
+
+deck.forEach(emoji=>{
+const card=document.createElement("div");
+card.className="memory-card";
+card.textContent="❔";
+card.dataset.emoji=emoji;
+card.onclick=()=>flipCard(card);
+grid.appendChild(card);
+});
+}
+
+function flipCard(card){
+if(lock||card.textContent!=="❔")return;
+card.textContent=card.dataset.emoji;
+
+if(!first){
+first=card;
+return;
+}
+
+if(first===card)return;
+
+if(first.dataset.emoji===card.dataset.emoji){
+matched+=2;
+first=null;
+
+if(matched===16){
+document.getElementById("memoryResult").textContent="🏆 YOU WON! ALL PAIRS MATCHED!";
+}
+}else{
+lock=true;
+const previous=first;
+first=null;
+setTimeout(()=>{
+card.textContent="❔";
+previous.textContent="❔";
+lock=false;
+},800);
+}
+}
+startMemory();
+</script>
+
+</body>
+</html>
+EOF
+cat > index.html <<'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080814">
+<title>The Unbreakable 14 ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+background:#080814;color:white;
+font-family:Arial,sans-serif;
+overflow-x:hidden
+}
+header{
+min-height:100vh;display:flex;
+flex-direction:column;justify-content:center;
+align-items:center;text-align:center;
+padding:25px;
+background:radial-gradient(circle at top,#44216d,transparent 60%),linear-gradient(145deg,#080814,#11112b)
+}
+.tag{color:#c7a5ff;letter-spacing:4px;font-size:12px;margin-bottom:25px}
+h1{
+font-size:clamp(43px,10vw,85px);
+font-weight:900;
+background:linear-gradient(90deg,#fff,#bd8aff,#55d9ff);
+-webkit-background-clip:text;color:transparent
+}
+.subtitle{color:#d1c5e9;margin-top:20px;line-height:1.9}
+button{
+border:0;padding:14px 25px;border-radius:30px;
+background:linear-gradient(90deg,#8d45ff,#388eff);
+color:white;font-size:14px;font-weight:bold;
+margin:12px 5px;cursor:pointer;
+box-shadow:0 0 20px #7540ff55
+}
+button:active{transform:scale(.96)}
+section{padding:75px 18px;text-align:center}
+.section-title{font-size:32px;color:#d8b8ff;margin-bottom:15px}
+.description{color:#aaa3bc;line-height:1.8;margin-bottom:30px}
+#clock{color:#c39cff;margin-top:25px;font-size:13px}
+.friends{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:13px;max-width:950px;margin:auto
+}
+.card{
+padding:25px 8px;border:1px solid #45316c;
+border-radius:18px;background:linear-gradient(145deg,#19142d,#111123);
+transition:.3s
+}
+.card:hover{transform:translateY(-7px);box-shadow:0 0 22px #904dff66}
+.number{color:#9c75ff;font-size:12px;margin-bottom:12px}
+.card h3{font-size:18px}
+.quote-box{
+max-width:750px;margin:20px auto;padding:28px 18px;
+border-radius:20px;background:linear-gradient(135deg,#25153f,#131d39);
+border:1px solid #754caa;line-height:2;font-size:17px
+}
+.memories,.game-grid{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;max-width:950px;margin:auto
+}
+.memory,.game{
+background:linear-gradient(145deg,#20153c,#10182e);
+border:1px solid #754caa;border-radius:20px;padding:25px 15px
+}
+.memory span{font-size:35px}
+.memory h3,.game h3{color:#d9b8ff;margin:13px 0}
+.memory p,.game p{color:#c7bfd8;line-height:1.7}
+.message{max-width:750px;margin:25px auto;color:#d4cce6;line-height:2}
+.glow{text-shadow:0 0 20px #a34cff}
+.game-result{color:#d1a5ff;font-size:18px;font-weight:bold;margin-top:15px;min-height:28px}
+.game-board{
+display:grid;grid-template-columns:repeat(3,70px);
+gap:7px;justify-content:center;margin:20px auto
+}
+.cell{
+height:70px;background:#292044;border:1px solid #9465d8;
+border-radius:12px;font-size:28px;color:white;
+display:flex;align-items:center;justify-content:center
+}
+.tap-area{
+background:#30204c;border-radius:15px;padding:30px 8px;
+margin-top:15px;cursor:pointer;font-size:19px
+}
+.memory-grid{
+display:grid;grid-template-columns:repeat(4,1fr);
+gap:7px;max-width:300px;margin:20px auto
+}
+.memory-card{
+background:#30204c;border:1px solid #9465d8;
+border-radius:12px;height:62px;font-size:24px;
+display:flex;align-items:center;justify-content:center
+}
+footer{
+padding:40px 15px;text-align:center;
+background:#111022;color:#bca6e7;line-height:2
+}
+.heart{color:#ff4c8b}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="tag">CLASS 12 SCIENCE • FRIENDSHIP FOREVER</div>
+<h1>THE<br>UNBREAKABLE 14</h1>
+<div class="subtitle">
+14 Boys. One Brotherhood.<br>
+Countless Memories. Unlimited Madness.
+</div>
+<button onclick="go('friends')">ENTER OUR WORLD ❤️</button>
+<div id="clock"></div>
+</header>
+
+<section id="friends">
+<h2 class="section-title">THE LEGENDS 👑</h2>
+<p class="description">Different personalities, one family.<br>Meet our 14 unforgettable legends.</p>
+<div class="friends" id="friendCards"></div>
+</section>
+
+<section>
+<h2 class="section-title">OUR FRIENDSHIP 💜</h2>
+
+<div class="quote-box">
+"School gave us classrooms,<br>
+Science gave us experiments,<br>
+But life gave us something better —<br>
+<strong>14 friends who became family.</strong>"
+</div>
+
+<div class="quote-box">
+"We didn't come together to create memories.<br>
+We came together, and memories created themselves."
+</div>
+
+<div class="quote-box">
+"Marks may fade, exams will end,<br>
+Classes will change, years will pass.<br>
+But our friendship will always remain special."
+</div>
+
+<div class="quote-box">
+"Fourteen different minds,<br>
+Fourteen different dreams,<br>
+One unforgettable brotherhood."
+</div>
+</section>
+
+<section>
+<h2 class="section-title">OUR LITTLE UNIVERSE 🌌</h2>
+<div class="memories">
+
+<div class="memory">
+<span>😂</span><h3>Unlimited Madness</h3>
+<p>Every serious moment becomes a comedy scene.</p>
+</div>
+
+<div class="memory">
+<span>📚</span><h3>Science Squad</h3>
+<p>Physics, Chemistry, Biology and unforgettable classes.</p>
+</div>
+
+<div class="memory">
+<span>🤝</span><h3>Always Together</h3>
+<p>Different roads, but one unforgettable journey.</p>
+</div>
+
+<div class="memory">
+<span>❤️</span><h3>Forever Family</h3>
+<p>Not brothers by blood, brothers by friendship.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2 class="section-title">🎮 THE GAME ZONE</h2>
+<p class="description">Friendship is serious, but our games are seriously crazy!</p>
+
+<div class="game-grid">
+
+<div class="game">
+<h3>🎲 RANDOM LEGEND</h3>
+<p>Who is today's lucky legend?</p>
+<button onclick="randomLegend()">PICK A FRIEND</button>
+<div class="game-result" id="legendResult">???</div>
+</div>
+
+<div class="game">
+<h3>❌ TIC TAC TOE</h3>
+<p>Two friends. One winner.</p>
+<p id="turn">Player X's turn</p>
+<div class="game-board" id="board"></div>
+<div class="game-result" id="ticResult"></div>
+<button onclick="resetTic()">NEW GAME</button>
+</div>
+
+<div class="game">
+<h3>⚡ REACTION CHALLENGE</h3>
+<p>Wait for green, then tap quickly!</p>
+<div class="tap-area" id="tapArea" onclick="tapGame()">PRESS START FIRST</div>
+<button onclick="startReaction()">START</button>
+<div class="game-result" id="reactionResult"></div>
+</div>
+
+<div class="game">
+<h3>🧠 FRIENDSHIP MEMORY</h3>
+<p>Find all matching emoji pairs!</p>
+<div class="memory-grid" id="memoryGrid"></div>
+<div class="game-result" id="memoryResult"></div>
+<button onclick="startMemory()">RESTART</button>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2 class="section-title">A MESSAGE FOR ALL 14 ❤️</h2>
+
+<div class="message">
+Maybe one day we won't sit in the same classroom.<br><br>
+Maybe our daily meetings will become rare.<br><br>
+Maybe everyone will follow their own dreams and build their future.<br><br>
+But whenever we look back at our school days,
+we will remember these faces, these laughs,
+these crazy moments and this beautiful friendship.<br><br>
+
+<strong class="glow">
+NO MATTER WHERE LIFE TAKES US,<br>
+THE UNBREAKABLE 14 WILL ALWAYS BE ONE FAMILY.
+</strong>
+</div>
+
+<button onclick="showSurprise()">🎁 OPEN A SPECIAL SURPRISE</button>
+
+<div class="quote-box" id="surprise" style="display:none">
+<h2>❤️ ONE PROMISE</h2><br>
+No ego. No jealousy. No forgetting.<br>
+Never forget the people who made your school life special.<br><br>
+<strong>14 FRIENDS. ONE STORY. FOREVER.</strong>
+</div>
+</section>
+
+<footer>
+<h2>THE UNBREAKABLE 14</h2>
+<p>Class 12 Science • Batch of Legends</p>
+<p>Made with <span class="heart">♥</span> and countless memories.</p>
+<p>Friendship has no last chapter.</p>
+<p>© 2026 • Forever Together</p>
+</footer>
+
+<script>
+const names=[
+"Priyanshu","Trupal","Darshan","Evans",
+"Sahil","Samarth","Sujal","Dhruvin",
+"Divyesh","Shivansh","Harshal","Abhay",
+"Swith","Ritesh"
+];
+
+function go(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+const container=document.getElementById("friendCards");
+
+names.forEach((name,index)=>{
+const card=document.createElement("div");
+card.className="card";
+card.innerHTML=`
+<div class="number">LEGEND #${String(index+1).padStart(2,"0")}</div>
+<h3>${name}</h3>
+<div style="margin-top:12px;color:#b89bff">★ BROTHER ★</div>`;
+container.appendChild(card);
+});
+
+function showSurprise(){
+const s=document.getElementById("surprise");
+s.style.display="block";
+s.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function updateClock(){
+document.getElementById("clock").textContent=new Date().toLocaleString();
+}
+updateClock();
+setInterval(updateClock,1000);
+
+// RANDOM LEGEND
+function randomLegend(){
+const n=names[Math.floor(Math.random()*names.length)];
+document.getElementById("legendResult").textContent="👑 "+n+" IS TODAY'S LEGEND!";
+}
+
+// TIC TAC TOE
+let cells=Array(9).fill("");
+let player="X";
+let finished=false;
+
+const wins=[
+[0,1,2],[3,4,5],[6,7,8],
+[0,3,6],[1,4,7],[2,5,8],
+[0,4,8],[2,4,6]
+];
+
+function drawBoard(){
+const b=document.getElementById("board");
+b.innerHTML="";
+cells.forEach((v,i)=>{
+const c=document.createElement("div");
+c.className="cell";
+c.textContent=v;
+c.onclick=()=>playCell(i);
+b.appendChild(c);
+});
+}
+
+function playCell(i){
+if(cells[i]||finished)return;
+cells[i]=player;
+
+if(wins.some(w=>w.every(k=>cells[k]===player))){
+document.getElementById("ticResult").textContent="🏆 PLAYER "+player+" WINS!";
+finished=true;
+}else if(cells.every(Boolean)){
+document.getElementById("ticResult").textContent="🤝 IT'S A DRAW!";
+finished=true;
+}else{
+player=player==="X"?"O":"X";
+}
+document.getElementById("turn").textContent="Player "+player+"'s turn";
+drawBoard();
+}
+
+function resetTic(){
+cells=Array(9).fill("");
+player="X";
+finished=false;
+document.getElementById("ticResult").textContent="";
+document.getElementById("turn").textContent="Player X's turn";
+drawBoard();
+}
+drawBoard();
+
+// REACTION CHALLENGE
+let reactionTimer;
+let reactionState="idle";
+let reactionStart=0;
+
+function startReaction(){
+clearTimeout(reactionTimer);
+reactionState="waiting";
+const area=document.getElementById("tapArea");
+area.style.background="#a33b55";
+area.textContent="WAIT FOR GREEN...";
+document.getElementById("reactionResult").textContent="";
+
+reactionTimer=setTimeout(()=>{
+reactionState="ready";
+reactionStart=performance.now();
+area.style.background="#168b55";
+area.textContent="TAP NOW!!! ⚡";
+},1500+Math.random()*3500);
+}
+
+function tapGame(){
+const area=document.getElementById("tapArea");
+const result=document.getElementById("reactionResult");
+
+if(reactionState==="waiting"){
+clearTimeout(reactionTimer);
+reactionState="idle";
+area.textContent="TOO EARLY! 😅";
+result.textContent="Wait for green next time!";
+}else if(reactionState==="ready"){
+const ms=Math.round(performance.now()-reactionStart);
+reactionState="idle";
+area.textContent="NICE! PLAY AGAIN?";
+result.textContent="⚡ YOUR TIME: "+ms+" ms";
+}else{
+result.textContent="Press START to play!";
+}
+}
+
+// MEMORY GAME
+const emojis=["❤️","😂","🔥","🎮","⭐","👑","🚀","💜"];
+let deck=[],first=null,lock=false,matched=0;
+
+function startMemory(){
+deck=[...emojis,...emojis].sort(()=>Math.random()-.5);
+first=null;
+lock=false;
+matched=0;
+document.getElementById("memoryResult").textContent="";
+
+const grid=document.getElementById("memoryGrid");
+grid.innerHTML="";
+
+deck.forEach(emoji=>{
+const card=document.createElement("div");
+card.className="memory-card";
+card.textContent="❔";
+card.dataset.emoji=emoji;
+card.onclick=()=>flipCard(card);
+grid.appendChild(card);
+});
+}
+
+function flipCard(card){
+if(lock||card.textContent!=="❔")return;
+card.textContent=card.dataset.emoji;
+
+if(!first){
+first=card;
+return;
+}
+
+if(first===card)return;
+
+if(first.dataset.emoji===card.dataset.emoji){
+matched+=2;
+first=null;
+
+if(matched===16){
+document.getElementById("memoryResult").textContent="🏆 YOU WON! ALL PAIRS MATCHED!";
+}
+}else{
+lock=true;
+const previous=first;
+first=null;
+setTimeout(()=>{
+card.textContent="❔";
+previous.textContent="❔";
+lock=false;
+},800);
+}
+}
+startMemory();
+</script>
+
+</body>
+</html>
+EOF
